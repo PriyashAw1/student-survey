@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPulse - Survey</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="form">
+  <header class="navbar">
+    <a href="form.html" class="nav-logo">StudyPulse</a>
+    <nav>
+      <a href="form.html">Survey</a>
+      <a href="records.html">Records</a>
+      <button type="button" class="logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="page-heading">
+      <h1>Study Habits Survey</h1>
+      <p>Tell us about your study routine.</p>
+      <p id="welcome"></p>
+    </div>
+
+    <section class="card">
+      <form id="surveyForm">
+        <fieldset>
+          <legend>Student Information</legend>
+
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name">
+
+          <label for="year">Academic Year</label>
+          <select id="year" required>
+            <option value="">Choose your year</option>
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="Graduate">Graduate</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Study Preferences</legend>
+
+          <p>How do you prefer studying?</p>
+
+          <div class="radio-row">
+            <input type="radio" id="alone" name="method" value="Alone" required>
+            <label for="alone">Alone</label>
+          </div>
+
+          <div class="radio-row">
+            <input type="radio" id="group" name="method" value="Group">
+            <label for="group">With a Group</label>
+          </div>
+
+          <div class="radio-row">
+            <input type="radio" id="both" name="method" value="Both">
+            <label for="both">Both</label>
+          </div>
+
+          <label for="hours">Hours Spent Studying Per Day</label>
+          <input type="number" id="hours" min="0" max="24" step="0.5" required>
+
+          <div class="check-row">
+            <input type="checkbox" id="music">
+            <label for="music">I listen to music while studying</label>
+          </div>
+
+          <label for="comments">Describe Your Ideal Study Environment</label>
+          <textarea id="comments" rows="6" placeholder="Describe where and how you like to study..."></textarea>
+        </fieldset>
+
+        <button type="submit">Save Survey</button>
+      </form>
+
+      <p id="message" class="message" role="status"></p>
+
+      <a href="records.html">View Survey Records</a>
+    </section>
+  </main>
+</body>
+</html>
