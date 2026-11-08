@@ -139,7 +139,7 @@ app.post("/api/login", (req, res) => {
   res.json({ message: "Login successful", id: user.id, username: user.username });
 });
 
-// CHECK USER STATUS
+// CHECK CURRENT USER
 app.get("/api/me", requireLogin, (req, res) => {
   res.json({ id: req.user.id, username: req.user.username });
 });
@@ -172,7 +172,7 @@ app.post("/api/survey", requireLogin, (req, res) => {
     hours < 0 ||
     hours > 24
   ) {
-    return res.status(400).json({ error: "Please provide valid survey entries." });
+    return res.status(400).json({ error: "Please select valid survey options." });
   }
 
   const survey = {
@@ -191,7 +191,7 @@ app.post("/api/survey", requireLogin, (req, res) => {
   res.json({ message: "Survey saved successfully!" });
 });
 
-// RECORDS AND STATISTICS
+// SHOW ALL RECORDS AND STATISTICS
 app.get("/api/records", requireLogin, (req, res) => {
   const accounts = readJSON(ACCOUNT_LIST);
   const records = accounts.map(account => {
@@ -205,4 +205,27 @@ app.get("/api/records", requireLogin, (req, res) => {
 
   const completed = records.filter(r => r.survey !== null);
   const totalHours = completed.reduce((sum, r) => sum + r.survey.hours, 0);
-  const averageHours = completed.length ? (totalHours / completed.length
+  const averageHours = completed.length ? (totalHours / completed.length).toFixed(2) : "0.00";
+
+  const methods = { Alone: 0, Group: 0, Both: 0 };
+  completed.forEach(r => {
+    if (methods[r.survey.method] !== undefined) {
+      methods[r.survey.method]++;
+    }
+  });
+
+  res.json({
+    records,
+    stats: {
+      accounts: accounts.length,
+      completed: completed.length,
+      averageHours,
+      methods
+    }
+  });
+});
+
+// START SERVER
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
