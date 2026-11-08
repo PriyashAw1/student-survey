@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPulse - Records</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="records">
+  <header class="navbar">
+    <a href="form.html" class="nav-logo">StudyPulse</a>
+    <nav>
+      <a href="form.html">Survey</a>
+      <a href="records.html">Records</a>
+      <button type="button" class="logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="page-heading">
+      <h1>Survey Records</h1>
+      <p>Explore student responses and statistics.</p>
+    </div>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h2>Total Accounts</h2>
+        <p id="totalAccounts">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>Completed Surveys</h2>
+        <p id="completed">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>Average Study Hours</h2>
+        <p id="averageHours">0</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Study Method Statistics</h2>
+      <p id="methods"></p>
+    </section>
+
+    <section class="card">
+      <h2>Account Records</h2>
+
+      <label for="accountSelect">Select Account ID</label>
+      <select id="accountSelect">
+        <option value="">Select an account</option>
+      </select>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody id="recordTable">
+            <tr>
+              <td colspan="2">Select an account to view data.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <a href="form.html" class="button-link">Return to Survey</a>
+  </main>
+</body>
+</html>
