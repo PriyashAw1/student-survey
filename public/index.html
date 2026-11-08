@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPulse - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="login">
+  <main class="auth-container">
+    <div class="logo">StudyPulse</div>
+    <p class="subtitle">Student Study Habits Survey</p>
+
+    <section class="card">
+      <h1>Welcome Back</h1>
+      <p>Log in to access your study survey.</p>
+
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+
+        <div class="check-row">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember username</label>
+        </div>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <p id="message" class="message" role="status"></p>
+
+      <p>Don't have an account?</p>
+      <a class="button-link" href="register.html">Create Account</a>
+    </section>
+  </main>
+</body>
+</html>
